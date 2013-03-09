@@ -57,6 +57,11 @@ map <silent> sy :call YanktmpYank()<cr>
 map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 
+Bundle 'vim-scripts/netrw.vim'
+
+Bundle 'jnurmine/Zenburn'
+colorscheme zenburn
+
 " ###################################
 " default settings
 " ###################################
