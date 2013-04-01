@@ -28,7 +28,6 @@ let g:ref_source_webdict_sites = {
 " default site
 let g:ref_source_webdict_sites.default = 'ej'
 
-
 " output filter
 function! g:ref_source_webdict_sites.je.filter(output)
   return join(split(a:output, "\n")[15 :], "\n")
@@ -45,11 +44,10 @@ nmap <Leader>re :<C-u>Ref webdict ej<Space>
 let g:ref_phpmanual_path = $HOME.'/vim-ref/php/php-chunked-xhtml' 
 
 Bundle 'thinca/vim-quickrun'
-
 Bundle 'Shougo/unite.vim'
-
 Bundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
+
 highlight Pmenu ctermbg=8
 highlight PmenuSel ctermbg=1
 highlight PmenuSbar ctermbg=0
@@ -59,6 +57,7 @@ map <silent> sy :call YanktmpYank()<cr>
 map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/netrw.vim'
 Bundle 'jnurmine/Zenburn'
 colorscheme zenburn
