@@ -43,6 +43,11 @@ nmap <Leader>rj :<C-u>Ref webdict je<Space>
 nmap <Leader>re :<C-u>Ref webdict ej<Space>
 let g:ref_phpmanual_path = $HOME.'/vim-ref/php/php-chunked-xhtml' 
 
+Bundle 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size = 1
+
 Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
@@ -58,6 +63,8 @@ map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 
 Bundle 'Lokaltog/vim-powerline'
+"let g:Powerline_symbols = 'fancy'
+
 Bundle 'vim-scripts/netrw.vim'
 Bundle 'jnurmine/Zenburn'
 colorscheme zenburn
@@ -113,3 +120,5 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\[ENC=%{&fileencoding}]\[TYPE=%Y]\[ASC
 :nnoremap <ESC><ESC> :nohlsearch<CR>
 "256使用する
 set t_Co=256
+
+filetype plugin indent on 
