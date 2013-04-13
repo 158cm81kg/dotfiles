@@ -1,5 +1,5 @@
 " ###################################
-" Vundle 
+" Vundle Setting
 " ###################################
 set nocompatible
 filetype off
@@ -7,10 +7,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
-""""""""""""""""""""
-" github
-""""""""""""""""""""
 Bundle 'thinca/vim-ref'
 "webdict site settings
 let g:ref_source_webdict_sites = {
@@ -62,12 +58,21 @@ map <silent> sy :call YanktmpYank()<cr>
 map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 
-Bundle 'Lokaltog/vim-powerline'
-"let g:Powerline_symbols = 'fancy'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'janx/vim-rubytest'
+Bundle 'tpope/vim-rails'
 
+Bundle 'soh335/vim-symfony'
+
+Bundle 'vim-scripts/svn-diff.vim'
 Bundle 'vim-scripts/netrw.vim'
 Bundle 'jnurmine/Zenburn'
 colorscheme zenburn
+
+Bundle 'Lokaltog/vim-powerline'
+"let g:Powerline_symbols = 'fancy'
+
+filetype plugin indent on
 
 " ###################################
 " default settings
@@ -120,5 +125,3 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\[ENC=%{&fileencoding}]\[TYPE=%Y]\[ASC
 :nnoremap <ESC><ESC> :nohlsearch<CR>
 "256使用する
 set t_Co=256
-
-filetype plugin indent on 
