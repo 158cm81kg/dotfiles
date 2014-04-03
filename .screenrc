@@ -12,3 +12,6 @@ defscrollback 1024   # スクロールバッファ行数を増やす
 bind 'U' eval "encoding utf8" "stuff 'export LANG=ja_JP.UTF-8\012'"
 bind 'E' eval "encoding euc" "stuff 'export LANG=ja_JP.EUC-JP\012'"
 bind 'J' eval "encoding sjis" "stuff 'export LANG=ja_JP.SJIS\012'"
+
+# 256 colors
+termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
