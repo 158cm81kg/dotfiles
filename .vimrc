@@ -62,9 +62,11 @@ let g:yanktmp_file = $HOME.'/tmp/vimyanktmp'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'janx/vim-rubytest'
 Bundle 'tpope/vim-rails'
+Bundle 'gregsexton/gitv'
 
 Bundle 'soh335/vim-symfony'
 
+Bundle 'vim-scripts/DBGp-client'
 Bundle 'vim-scripts/svn-diff.vim'
 Bundle 'vim-scripts/netrw.vim'
 Bundle 'jnurmine/Zenburn'
