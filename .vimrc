@@ -48,6 +48,14 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
+Bundle 'Shougo/vimfiler'
+autocmd VimEnter * VimFiler -split -simple -winwidth=30 -no-quit
+let g:vimfiler_enable_auto_cd = 1
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default=0
+"let g:vimfiler_tree_leaf_icon = ' '
+"let g:vimfiler_file_icon = '-'
+"let g:vimfiler_marked_file_icon = '*'
 
 highlight Pmenu ctermbg=8
 highlight PmenuSel ctermbg=1
@@ -59,21 +67,24 @@ map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 let g:yanktmp_file = $HOME.'/tmp/vimyanktmp'
 
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'janx/vim-rubytest'
-Bundle 'tpope/vim-rails'
+"Bundle 'vim-ruby/vim-ruby'
+"Bundle 'janx/vim-rubytest'
+"Bundle 'tpope/vim-rails'
 Bundle 'gregsexton/gitv'
 
-Bundle 'soh335/vim-symfony'
+"Bundle 'soh335/vim-symfony'
 
 Bundle 'vim-scripts/DBGp-client'
-Bundle 'vim-scripts/svn-diff.vim'
 Bundle 'vim-scripts/netrw.vim'
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+let g:netrw_alto = 1
+let g:netrw_winsize = 80
 Bundle 'jnurmine/Zenburn'
 colorscheme zenburn
 
 Bundle 'Lokaltog/vim-powerline'
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 filetype plugin indent on
 
