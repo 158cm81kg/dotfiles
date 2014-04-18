@@ -49,13 +49,16 @@ Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 Bundle 'Shougo/vimfiler'
-autocmd VimEnter * VimFiler -split -simple -winwidth=30 -no-quit
-let g:vimfiler_enable_auto_cd = 1
+autocmd VimEnter * VimFiler -buffer-name=explorer -simple -split -winwidth=30 -toggle -no-quit
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default=0
-"let g:vimfiler_tree_leaf_icon = ' '
-"let g:vimfiler_file_icon = '-'
-"let g:vimfiler_marked_file_icon = '*'
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimfiler_enable_auto_cd = 1
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+
+Bundle 'Shougo/vimshell'
 
 highlight Pmenu ctermbg=8
 highlight PmenuSel ctermbg=1
@@ -83,8 +86,68 @@ let g:netrw_winsize = 80
 Bundle 'jnurmine/Zenburn'
 colorscheme zenburn
 
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
+Bundle 'itchyny/lightline.vim'
+let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode'
+        \ }
+        \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 
 filetype plugin indent on
 
