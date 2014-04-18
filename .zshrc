@@ -81,9 +81,10 @@ RPROMPT='%{[1;31m%}%5v%{[0;37m%}'
 #######################################################
 # auto-fu.zsh settings
 #######################################################
+# cd ~/
 # git clone https://github.com/hchbaw/auto-fu.zsh.git
 # mkdir ~/.zsh
-# mv auto-fu.zsh/auto-fu.zsh ~/.zsh/
+# mv ~/auto-fu.zsh/auto-fu.zsh ~/.zsh/
 if [ -f ~/.zsh/auto-fu.zsh ]; then
     source ~/.zsh/auto-fu.zsh
     function zle-line-init () {
