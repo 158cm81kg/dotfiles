@@ -78,6 +78,7 @@ esac
 
 RPROMPT='%{[1;31m%}%5v%{[0;37m%}'
 
+# https://github.com/hchbaw/auto-fu.zsh
 # auto-fu.zsh setting
 if [ -f ~/.zsh/auto-fu.zsh ]; then
     source ~/.zsh/auto-fu.zsh
