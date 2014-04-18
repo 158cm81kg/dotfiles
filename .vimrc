@@ -3,11 +3,20 @@
 " ###################################
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'thinca/vim-ref'
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+
+if has('vim_starting')
+     set runtimepath+=~/.vim/bundle/neobundle.vim
+     call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+
+"NeoBundle 'gmarik/vundle'
+NeoBundle 'thinca/vim-ref'
 "webdict site settings
 let g:ref_source_webdict_sites = {
 \   'je': {
@@ -39,16 +48,16 @@ nmap <Leader>rj :<C-u>Ref webdict je<Space>
 nmap <Leader>re :<C-u>Ref webdict ej<Space>
 let g:ref_phpmanual_path = $HOME.'/vim-ref/php/php-chunked-xhtml' 
 
-Bundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
 
-Bundle 'thinca/vim-quickrun'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
-Bundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimfiler'
 autocmd VimEnter * VimFiler -buffer-name=explorer -simple -split -winwidth=30 -toggle -no-quit
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
@@ -58,35 +67,35 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_marked_file_icon = '*'
 
-Bundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell'
 
 highlight Pmenu ctermbg=8
 highlight PmenuSel ctermbg=1
 highlight PmenuSbar ctermbg=0
 
-Bundle 'vim-scripts/yanktmp.vim'
+NeoBundle 'vim-scripts/yanktmp.vim'
 map <silent> sy :call YanktmpYank()<cr>
 map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 let g:yanktmp_file = $HOME.'/tmp/vimyanktmp'
 
-"Bundle 'vim-ruby/vim-ruby'
-"Bundle 'janx/vim-rubytest'
-"Bundle 'tpope/vim-rails'
-Bundle 'gregsexton/gitv'
+"NeoBundle 'vim-ruby/vim-ruby'
+"NeoBundle 'janx/vim-rubytest'
+"NeoBundle 'tpope/vim-rails'
+NeoBundle 'gregsexton/gitv'
 
-"Bundle 'soh335/vim-symfony'
+"NeoBundle 'soh335/vim-symfony'
 
-Bundle 'vim-scripts/DBGp-client'
-Bundle 'vim-scripts/netrw.vim'
+NeoBundle 'vim-scripts/DBGp-client'
+NeoBundle 'vim-scripts/netrw.vim'
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 let g:netrw_winsize = 80
-Bundle 'jnurmine/Zenburn'
+NeoBundle 'jnurmine/Zenburn'
 colorscheme zenburn
 
-Bundle 'itchyny/lightline.vim'
+NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -150,6 +159,8 @@ endfunction
 
 
 filetype plugin indent on
+filetype indent on
+syntax on
 
 " ###################################
 " default settings
