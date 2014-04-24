@@ -1,5 +1,5 @@
 " ###################################
-" Vundle Setting
+"  plugins Setting
 " ###################################
 set nocompatible
 filetype off
