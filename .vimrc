@@ -1,52 +1,34 @@
 " ###################################
 "  plugins Setting
 " ###################################
-set nocompatible
-filetype off
 
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
+if !1 | finish | endif
 
 if has('vim_starting')
-     set runtimepath+=~/.vim/bundle/neobundle.vim
-     call neobundle#rc(expand('~/.vim/bundle/'))
+	if &compatible
+		set nocompatible
+	endif
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck
 
-"NeoBundle 'gmarik/vundle'
-NeoBundle 'thinca/vim-ref'
-"webdict site settings
-let g:ref_source_webdict_sites = {
-\   'je': {
-\     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
-\   },
-\   'ej': {
-\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
-\   },
-\   'wiki': {
-\     'url': 'http://ja.wikipedia.org/wiki/%s',
-\   },
-\ }
- 
-" default site
-let g:ref_source_webdict_sites.default = 'ej'
-
-" output filter
-function! g:ref_source_webdict_sites.je.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.ej.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.wiki.filter(output)
-  return join(split(a:output, "\n")[17 :], "\n")
-endfunction
-
-nmap <Leader>rj :<C-u>Ref webdict je<Space>
-nmap <Leader>re :<C-u>Ref webdict ej<Space>
-let g:ref_phpmanual_path = $HOME.'/vim-ref/php/php-chunked-xhtml' 
+let g:make = 'gmake'
+if system('uname -o') =~ '^GNU/'
+        let g:make = 'make'
+endif
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+    \ 'windows' : 'make -f make_mingw32.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+  \ },
+  \ }
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
@@ -174,7 +156,7 @@ highlight Comment ctermfg=LightCyan
 " vim の独自拡張機能を使う[viとの互換性をとらない]
 set nocompatible
 "タブの代わりに空白文字を挿入する
-set expandtab
+"set expandtab
 " 自動認識させる改行コードを指定する
 set fileformats=unix,dos
 " ウィンドウ枠にタイトルを表示する
