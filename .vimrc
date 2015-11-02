@@ -13,9 +13,6 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
-filetype plugin indent on
-NeoBundleCheck
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
@@ -68,16 +65,22 @@ NeoBundle 'gregsexton/gitv'
 
 "NeoBundle 'soh335/vim-symfony'
 
-NeoBundle 'vim-scripts/DBGp-client'
+"NeoBundle 'vim-scripts/DBGp-client'
 NeoBundle 'vim-scripts/netrw.vim'
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 let g:netrw_winsize = 80
 NeoBundle 'jnurmine/Zenburn'
-colorscheme zenburn
 
 NeoBundle 'itchyny/lightline.vim'
+
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck
+
+colorscheme zenburn 
+
 let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -176,8 +179,12 @@ set showmatch
 set wrap
 " バックスペース対応
 set backspace=indent,eol,start
-" ファイルの文字コード自動確認
-set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+"ファイルの文字コード自動確認
+:setl ff=unix
+:set encoding=utf-8
+:set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+:set fileformats=unix,dos,mac
+:set fenc=utf-8
 " ウィンドウ枠にタイトルを表示する
 set display=uhex
 " スクロール時の余白確保
