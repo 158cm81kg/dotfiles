@@ -75,6 +75,8 @@ NeoBundle 'jnurmine/Zenburn'
 
 NeoBundle 'itchyny/lightline.vim'
 
+NeoBundle 'editorconfig/editorconfig-vim'
+
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
