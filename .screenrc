@@ -8,8 +8,8 @@ encoding utf-8 utf-8
 
 hardstatus alwayslastline "%{= gk}[%y/%m/%d %02c] %{gW} %-w%{= wk}%n %t%{-}%+w %=%{gk}$USER@$HOSTNAME[$LANG] (%l)"
 
-defshell /bin/zsh
-shell $SHELL
+defshell /usr/local/bin/fish
+shell fish
 
 startup_message off  # 起動画面OFF
 autodetach on        # 自動detach

@@ -58,6 +58,10 @@ map <silent> sp :call YanktmpPaste_p()<cr>
 map <silent> sP :call YanktmpPaste_P()<cr> 
 let g:yanktmp_file = $HOME.'/tmp/vimyanktmp'
 
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_ruby_checkers = ['rubocop']
+
 "NeoBundle 'vim-ruby/vim-ruby'
 "NeoBundle 'janx/vim-rubytest'
 "NeoBundle 'tpope/vim-rails'
